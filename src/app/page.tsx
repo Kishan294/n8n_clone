@@ -1,14 +1,17 @@
-"use client";
 import { Button } from "@/components/ui/button";
-import { trpc } from "@/trpc/client";
-import React from "react";
+import { signOut } from "@/lib/auth-client";
+import { requireAuth } from "@/lib/auth-utils";
+import { trpc } from "@/trpc/server";
 
-const HomePage = () => {
-  const users = trpc.getUsers.useQuery();
+const HomePage = async () => {
+  await requireAuth();
+
+  const data = await trpc.getUsers();
   return (
-    <div className="text-3xl font-bold">
-      {JSON.stringify(users.data)}
-      <Button>Click me</Button>
+    <div className="min-h-screen min-w-screen flex items-center justify-center">
+      {JSON.stringify(data)}
+      <h1 className="text-3xl font-bold">Hey</h1>
+      {/* <Button onClick={() => signOut()}>Logout</Button> */}
     </div>
   );
 };
