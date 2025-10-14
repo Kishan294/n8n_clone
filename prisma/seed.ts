@@ -35,6 +35,11 @@ const userData: Prisma.UserCreateInput[] = [
   },
 ];
 
+/**
+ * Seeds the database with the users defined in `userData`.
+ *
+ * Creates each user and their associated posts using the Prisma client.
+ */
 export async function main() {
   for (const u of userData) {
     await prisma.user.create({ data: u });
