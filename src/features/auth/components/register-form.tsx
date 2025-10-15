@@ -24,6 +24,7 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { signUp } from "@/lib/auth-client";
+import Image from "next/image";
 
 const signUpSchema = z
   .object({
@@ -89,6 +90,12 @@ export const RegisterForm = () => {
                     type="button"
                     disabled={isPending}
                   >
+                    <Image
+                      src="/github.svg"
+                      alt="github"
+                      width={20}
+                      height={20}
+                    />
                     Continue with Github
                   </Button>
                 </div>
@@ -99,6 +106,12 @@ export const RegisterForm = () => {
                     type="button"
                     disabled={isPending}
                   >
+                    <Image
+                      src="/google.svg"
+                      alt="google"
+                      width={20}
+                      height={20}
+                    />
                     Continue with Google
                   </Button>
                 </div>
